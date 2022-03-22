@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.example.mylibrary.Text;
+
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -13,5 +16,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Log.d("mmm","");
+
+        Text.print();
     }
 }

@@ -2,6 +2,13 @@ plugins {
     id 'com.android.library'
 }
 
+//apply plugin: 'maven-publish'
+//apply plugin: 'signing'
+
+apply plugin:'maven'
+
+
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.0"
@@ -36,3 +43,56 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 }
+
+
+//publishing {
+//    publications {
+//        maven(MavenPublication) {
+//            groupId 'io.githunb.renxh4' //开通maven central时候定义的
+//            artifactId 'test-aar' //资源名称
+//            version '0.0.1' //版本名称
+//            pom {
+//                name = 'text-aar'
+//                description = 'arr'
+//                url = 'https://github.com/renxh4/TextJCenter'
+//                inceptionYear = '2022'
+//            }
+//
+//            artifact  './build/outputs/aar/dialogLibs-release.aar'
+//        }
+//    }
+//    repositories {
+//        maven {
+//            // 指定要上传的maven仓库
+//            url = 'https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/'
+//            //Maven仓库用户名和密码
+//            credentials {
+//                username 'renxhui'
+//                password 'adhu2012'
+//            }
+//        }
+//    }
+//}
+//signing {
+//    sign publishing.publications.maven //签名配置
+//}
+
+uploadArchives {
+    configuration = configurations.archives
+    repositories {
+        mavenDeployer {
+            repository(url: 'http://127.0.0.1:8081/repository/maven-releases/') {
+                authentication(userName: 'admin', password: 'admin')
+            }
+            pom.project {
+                version '1.0.0'
+                artifactId 'testaar'
+                groupId 'demo.renxh.com'
+                packaging 'aar'
+                description 'update version 1.1.0'
+            }
+        }
+    }
+}
+
+
