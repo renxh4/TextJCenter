@@ -9,7 +9,6 @@ apply plugin: 'signing'
 //apply plugin:'maven'
 
 
-
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.0"
@@ -57,11 +56,43 @@ publishing {
                 description = 'arr'
                 url = 'https://github.com/renxh4/TextJCenter'
                 inceptionYear = '2022'
+
+                scm {
+                    url = 'https://github.com/renxh4/TextJCenter'
+                    connection = 'scm:git@https://github.com/renxh4/TextJCenter.git'
+                    developerConnection = 'scm:git@https://github.com/renxh4/TextJCenter.git'
+                }
+
+                licenses {
+                    license {
+                        name = 'The Apache Software License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                        distribution = 'repo'
+                        comments = 'A business-friendly OSS license'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id = 'xiaohui'
+                        name = 'ren'
+                        email = '18039395421@163.com'
+                        url = 'https://github.com/renxh4/TextJCenter'
+                    }
+                }
+
+                issueManagement {
+                    system = 'Github'
+                    url = 'https://github.com/renxh4/TextJCenter'
+                }
+
             }
 
-            artifact  './build/outputs/aar/mylibrary-release.aar'
+            artifact './build/outputs/aar/mylibrary-release.aar'
         }
+
     }
+
     repositories {
         maven {
             // 指定要上传的maven仓库
